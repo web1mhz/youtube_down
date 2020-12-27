@@ -61,10 +61,8 @@ except OSError as e:
         raise
 
 
-parent_dir = download_folder 
-
 # 동영상 2번 형식(video/mp4" res="720p" fps="30fps) 다운로드 수행
-vids.download(parent_dir) 
+vids.download(download_folder) 
 
 print('동영상 다운로드')
 
