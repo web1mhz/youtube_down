@@ -18,6 +18,7 @@ import os
 import subprocess
 # pip install pytube3
 import pytube
+from pytube.cli import on_progress
 import time
 
 
@@ -50,7 +51,7 @@ for url in urls:
     if url =='':
         break
     print(youtube_address)
-    yt = pytube.YouTube(youtube_address) #다운받을 동영상 URL 지정
+    yt = pytube.YouTube(youtube_address, on_progress_callback=on_progress) #다운받을 동영상 URL 지정
     # vids=yt.streams.all() -- 오류 발생 : this is list object. all() is useless
     vids= yt.streams
     vids = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()

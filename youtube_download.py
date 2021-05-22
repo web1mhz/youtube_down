@@ -14,9 +14,18 @@ import subprocess
 # pip install pytube3
 import pytube
 
+from pytube.cli import on_progress
+
+
+
+# import ssl
+# ssl._create_default_https_context = ssl._create_stdlib_context
+
+
+#다운받을 동영상 URL 지정
 
 youtube_address = input("동영상주소는? (예시: https://www.youtube.com/watch?v=whBV&index=13)")
-yt = pytube.YouTube(youtube_address) #다운받을 동영상 URL 지정
+yt = pytube.YouTube(youtube_address, on_progress_callback=on_progress)
 
 # vids=yt.streams.all() -- 오류 발생 : this is list object. all() is useless
 
@@ -65,8 +74,3 @@ except OSError as e:
 vids.download(download_folder) 
 
 print('동영상 다운로드')
-
-
-
-
-

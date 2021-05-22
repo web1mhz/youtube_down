@@ -19,12 +19,14 @@ import os
 import subprocess
 # pip install pytube3
 import pytube
+from pytube.cli import on_progress
+
 import time
 
 
 
 youtube_address = input("동영상주소는? (예시: https://www.youtube.com/watch?v=whBV&index=13)")
-yt = pytube.YouTube(youtube_address) #다운받을 동영상 URL 지정
+yt = pytube.YouTube(youtube_address, on_progress_callback=on_progress) #다운받을 동영상 URL 지정
 
 
 vids= yt.streams
